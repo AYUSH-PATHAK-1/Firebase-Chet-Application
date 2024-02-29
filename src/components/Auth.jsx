@@ -4,18 +4,17 @@ import { signInWithPopup } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import Cookies from "universal-cookie";
 
-const cookie=new Cookies();
+const cookie = new Cookies();
 
-
-const Auth = ({setIsAuth}) => {
+const Auth = ({ setIsAuth }) => {
   const signInWithGoogle = async () => {
-    try{
-    const res=await signInWithPopup(auth, provider);
-    console.log(res);
-    cookie.set("auth-token",res.user.refreshToken);
-    setIsAuth(true);
-    }catch(e){
-        console.log(e);
+    try {
+      const res = await signInWithPopup(auth, provider);
+      console.log(res);
+      cookie.set("auth-token", res.user.refreshToken);
+      setIsAuth(true);
+    } catch (e) {
+      console.log(e);
     }
   };
 
